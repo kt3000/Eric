@@ -30,3 +30,8 @@ def check_input_message(text):
         return "无"
     else:
         return text
+
+
+def decode_text_utf8(text):
+    return text.decode('utf8')
+
