@@ -4,7 +4,11 @@ from wxpy import *
 import utils
 
 
-def start_group_bot(group_name):
+def start():
+    embed()
+
+
+def build_group_bot(group_name):
     bot = Bot(cache_path=True)
     bot.enable_puid()
     group = ensure_one(bot.groups(update=True).search(group_name))
@@ -14,13 +18,12 @@ def start_group_bot(group_name):
     # and only one registration function is matched.
     register_print(bot)
     register_repeat(bot, group)
-
     welcome(group)
 
 
 def welcome(group):
     pass
-    group.send(utils.decode_text_utf8("大家好,我是人工智障我叫缺西"))
+    group.send(utils.decode_text_utf8(" "))
 
 
 def register_print(bot):
@@ -36,5 +39,5 @@ def register_repeat(bot, group):
 
 
 if __name__ == '__main__':
-    start_group_bot(utils.decode_text_utf8("缺西"))
-    embed()
+    build_group_bot(utils.decode_text_utf8("缺西"))
+    start()
