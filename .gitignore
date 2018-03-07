@@ -102,3 +102,5 @@ ENV/
 
 .idea/
 .DS_Store
+wxpy_puid.pkl
+wxpy.pkl
