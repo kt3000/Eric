@@ -4,14 +4,33 @@ import aiml
 import os
 
 
-def start():
+class AIMLBot:
     aiml_bot = aiml.Kernel()
-    # TODO(mickey.zhou refactor follow code as For loop)
-    aiml_bot.learn(os.path.split(os.path.realpath(__file__))[0] + "/resources/std-startup.xml")
-    aiml_bot.learn(os.path.split(os.path.realpath(__file__))[0] + "/resources/bye.aiml")
-    aiml_bot.learn(os.path.split(os.path.realpath(__file__))[0] + "/resources/tools.aiml")
-    aiml_bot.learn(os.path.split(os.path.realpath(__file__))[0] + "/resources/bad.aiml")
-    aiml_bot.learn(os.path.split(os.path.realpath(__file__))[0] + "/resources/funny.aiml")
-    aiml_bot.learn(os.path.split(os.path.realpath(__file__))[0] + "/resources/OrdinaryQuestion.aiml")
-    aiml_bot.learn(os.path.split(os.path.realpath(__file__))[0] + "/resources/Common conversation.aiml")
-    return aiml_bot
+
+    def start(self):
+        resources_path = os.path.join(os.path.abspath('.'), "resources")
+
+        # TODO(mickey.zhou refactor follow code as For loop)
+        self.aiml_bot.learn(os.path.join(resources_path, "std-startup.xml"))
+        self.aiml_bot.learn(os.path.join(resources_path, "bye.aiml"))
+        self.aiml_bot.learn(os.path.join(resources_path, "tools.aiml"))
+        self.aiml_bot.learn(os.path.join(resources_path, "bad.aiml"))
+        self.aiml_bot.learn(os.path.join(resources_path, "funny.aiml"))
+        self.aiml_bot.learn(os.path.join(resources_path, "OrdinaryQuestion.aiml"))
+        self.aiml_bot.learn(os.path.join(resources_path, "Common conversation.aiml"))
+
+    @staticmethod
+    def reply(msg):
+        return 'Eric:', msg
+
+    def process_chat(self, msg):
+        aiml_resp = self.aiml_bot.respond(msg)
+        if aiml_resp == "":
+            return self.reply('找不到答案')
+        elif aiml_resp[0] == '#':
+            pass
+        else:
+            return aiml_resp
+
+
+

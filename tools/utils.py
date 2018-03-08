@@ -24,12 +24,13 @@ def word_segment(text):
 
 
 def check_input_message(text):
+    text = text.strip()
     if len(text) > 60:
         return "句子长度过长"
     elif text == "":
         return "无"
     else:
-        return text
+        return word_segment(text)
 
 
 def decode_text_utf8(text):

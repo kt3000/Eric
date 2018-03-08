@@ -2,7 +2,6 @@
 
 from bs4 import BeautifulSoup
 import requests
-
 headers = {'User-Agent': 'Mozilla/5.0 (X11; U; Linux i686)Gecko/20071127 Firefox/2.0.0.11'}
 
 
@@ -41,3 +40,6 @@ def html_filter(soup):
     [s.extract() for s in soup(['script', 'style', 'img', 'sup', 'b'])]
     return soup
 
+
+def web_process(msg):
+    pass

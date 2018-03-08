@@ -35,6 +35,7 @@ def register_print(bot):
 def register_repeat(bot, group):
     @bot.register(group, TEXT)
     def auto_reply(msg):
+        # TODO(mickey.zhou add service)
         return "Return" + msg.text
 
 
