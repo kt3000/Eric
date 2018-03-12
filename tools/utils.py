@@ -23,14 +23,21 @@ def word_segment(text):
     return result
 
 
+def get_noun(query):
+    keywords = []
+    words = pos_tag(query)
+    for k in words:
+        if k.flag.__contains__("n"):
+            keywords.append(k.word)
+    return keywords
+
+
 def check_input_message(text):
     text = text.strip()
-    if len(text) > 60:
-        return "句子长度过长"
-    elif text == "":
+    if text == "":
         return "无"
     else:
-        return word_segment(text)
+        return text
 
 
 def decode_text_utf8(text):
