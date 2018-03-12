@@ -43,7 +43,7 @@ class WebParser:
         soup_bing = BeautifulSoup(requests.get(url=url, headers=self.headers).content.decode('utf-8'), "lxml")
         return WebParser.html_filter(soup_bing)
 
-    def get_baike_info(self,basicInfo_block):
+    def get_baike_info(self, basicInfo_block):
         info = {}
         for bI_LR in basicInfo_block.contents[1:3]:
             for bI in bI_LR:
@@ -263,7 +263,6 @@ class WebParser:
 
             text += results.get_text()
 
-        # print text
 
 
         # 如果再两家搜索引擎的知识图谱中都没找到答案，那么就分析摘要
